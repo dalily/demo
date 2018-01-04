@@ -2,8 +2,7 @@
 
 if($result){
 	echo "yes! it works as expected";
-}
-else {
+} else {
 	echo "ops! it doesn't work";
 }
 ?>
