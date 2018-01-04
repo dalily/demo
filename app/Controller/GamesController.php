@@ -6,7 +6,7 @@ App::uses('AppController', 'Controller');
 
 /**
  * Games controller
- * @package       app.Controller
+ * @package app.Controller
  */
 class GamesController extends AppController {
 
@@ -36,7 +36,7 @@ class GamesController extends AppController {
 
 /**
  * request cards validation service
- * @param Array $datum array of unordered cards
+ * @param Array $sortedCard array of unordered cards
  * @param String $exerciceId exercice identifier
  * @return Bool true on success
  * @throws SocketException
@@ -73,18 +73,18 @@ class GamesController extends AppController {
  */
 	private function _requestCardsService(){
 	     
-		// remotely get the information from cards services
+		
 		$url =  Configure::read('Service.getCardsUrl');
 		$datum = array();
+		// remotely get the information from cards services
+		$httpSocket = new HttpSocket();
+		$response = $httpSocket->get($url);
+		
+		if ($response->code != 200) {
+			throw new SocketException('Services cartes inaccessible');
+		}
 
-			$httpSocket = new HttpSocket();
-			$response = $httpSocket->get($url);
-			
-			if ($response->code != 200) {
-				throw new SocketException('Services cartes inaccessible');
-			}
-
-			$datum = json_decode($response->body, true);
+		$datum = json_decode($response->body, true);
 
 		if (empty($datum['data']['cards']) || 
 			empty($datum['data']['categoryOrder']) || 
