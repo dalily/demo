@@ -43,14 +43,14 @@ class GamesController extends AppController {
  */
 	private function _validateSortedCards(Array $sortedCard, $exerciceId){
 	    $body = json_encode(array('cards' => $sortedCard));
-		// remotely get the information from cards services
+		
 		$url =  Configure::read('Service.postCardsUrl');
 		$request = array(
 			'header' => array('Content-Type' => 'application/json'),
 		);
 
 		$datum = array();
-
+		// post data to cards validation services
 		$httpSocket = new HttpSocket();
 		$response = $httpSocket->post($url.$exerciceId, $body, $request);
 
