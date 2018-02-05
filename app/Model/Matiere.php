@@ -20,26 +20,26 @@ public $displayField = 'nom';
  *
  * @var array
  */
-	public $validate = array(
-		'nom' => array(
-			'notBlank' => array(
-				'rule' => array('notBlank'),
-				'message' => 'Ce champ ne peut pas être vide',
-			),
-		),
-	);
+    public $validate = array(
+        'nom' => array(
+            'notBlank' => array(
+                'rule' => array('notBlank'),
+                'message' => 'Ce champ ne peut pas être vide',
+            ),
+        ),
+    );
 
 /**
  * hasMany associations
  *
  * @var array
  */
-	public $hasMany = array(
-		'Note' => array(
-			'className' => 'Note',
-			'foreignKey' => 'matiere_id',
-			'dependent' => false
-		)
-	);
+    public $hasMany = array(
+        'Note' => array(
+            'className' => 'Note',
+            'foreignKey' => 'matiere_id',
+            'dependent' => false
+        )
+    );
 
 }
