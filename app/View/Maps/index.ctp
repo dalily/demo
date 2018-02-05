@@ -1,18 +1,15 @@
-    <?php 
-        /*echo $this->Html->css(array(
-            '../plugins/angular/angular.min.css',
-        ), 'inline' => false);*/
-        echo $this->Html->script(array("https://maps.googleapis.com/maps/api/js?key=AIzaSyCBKp7mpjH5LksyOaXg45x5ZHfLqeynFF0&libraries=drawing,geometry"
-        ), array('inline' => false));
-        echo $this->Html->script(array(
-            '../plugins/jquery/jquery.easing.1.3.js',
-            '../plugins/angular/angular.min.js',
-            '../plugins/marker/markerclusterer.js',
-            '../plugins/marker/markerAnimate.js',
-            '../plugins/marker/SlidingMarker.min.js',
-            'controllers',
-        ), array('inline' => false));
-    ?>
+<?php 
+    echo $this->Html->script(array("https://maps.googleapis.com/maps/api/js?key=AIzaSyCBKp7mpjH5LksyOaXg45x5ZHfLqeynFF0&libraries=drawing,geometry"
+    ), array('inline' => false));
+    echo $this->Html->script(array(
+        '../plugins/jquery/jquery.easing.1.3.js',
+        '../plugins/angular/angular.min.js',
+        '../plugins/marker/markerclusterer.js',
+        '../plugins/marker/markerAnimate.js',
+        '../plugins/marker/SlidingMarker.min.js',
+        'controllers',
+    ), array('inline' => false));
+?>
 <script>
 <?php  $this->Html->scriptStart(array('inline' => false)); ?>
 angular.element(document).ready(function() {
