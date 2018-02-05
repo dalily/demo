@@ -76,7 +76,6 @@ angular.module('mapDemo', [])
         }
 
         $scope.pause = function (key) {
-            //$scope.trackers[key].play = !$scope.trackers[key].play;
             $scope.trackers[key].play = false;
             clearInterval($scope.trackers[key].timer);
         }
