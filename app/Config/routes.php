@@ -25,11 +25,11 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'games', 'action' => 'getSortedCards'));
+	Router::connect('/', array('controller' => 'notes', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
-	Router::connect('/games/*', array('controller' => 'games', 'action' => 'getSortedCards'));
+	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on
@@ -42,3 +42,5 @@
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+	
+	Router::parseExtensions('json');

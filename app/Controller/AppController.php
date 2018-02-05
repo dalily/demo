@@ -27,8 +27,69 @@ App::uses('Controller', 'Controller');
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @package		app.Controller
- * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
+ * @package     app.Controller
+ * @link        https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+/**
+ * Components
+ *
+ * @var array
+ */ 
+    public $components = array('RequestHandler');
+
+/**
+ * __format_datagrid_data method
+ *
+ * @access protected
+ * @param array $unformated_data unformated data
+ * @return array $formated_data formated data
+ */
+    protected function __format_datagrid_data($unformated_data) {
+        $formated_data = array();
+
+        foreach ($unformated_data as $datum) {
+
+            $formated_data[] = $datum;
+        }
+
+        return $formated_data;
+    }
+/**
+ * __getDataTablePaginator method
+ *
+ * @access protected
+ * @return array dataTable order and page
+ */
+
+    protected function __getDataTablePaginator(){
+        
+        if ( isset( $this->params['data']['start'] ) && 
+            $this->params['data']['length'] != '-1' ) {
+            $limit = $this->params['data']['length'];
+        }
+
+        $page = "1";
+        
+        if ( isset( $this->params['data']['start'] )) {
+            $page = ($this->params['data']['start'] / $limit) + 1;
+        }
+
+        $order = "";
+        
+        if ( isset( $this->params['data']['order'] ) ) {
+
+            foreach ($this->params['data']['order'] as $i => $datum) {
+                if ( $this->params['data']['columns'][$datum['column']]['orderable'] == "true" ) {
+                    if(!empty($order)) {
+                        $order .= ", ";
+                    }
+                    $order .= "".$this->params['data']['columns'][$datum['column']]['data']." ".$datum['dir'];
+                }
+            }
+        }
+
+        return array($page, $order);        
+    }
 }

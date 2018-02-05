@@ -90,6 +90,8 @@ Cache::config('default', array('engine' => 'File'));
  *
  * ));
  */
+Configure::write('DataGrid.limit', 10);
+Configure::write('Config.language', 'fra');
 Configure::write('Dispatcher.filters', array(
 	'AssetDispatcher',
 	'CacheDispatcher'
@@ -109,6 +111,3 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
-
-Configure::write('Service.postCardsUrl', 'https://recrutement.local-trust.com/test/');
-Configure::write('Service.getCardsUrl', 'https://recrutement.local-trust.com/test/cards/57187b7c975adeb8520a283c');
